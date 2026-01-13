@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Generator</title>
+  <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+<body>
+
+<h2>Image Generator (CPU)</h2>
+
+<input id="prompt" placeholder="e.g. golden retriever" />
+<button onclick="generate()">Generate</button>
+
+<p id="status"></p>
+<img id="result" width="256"/>
+
+<script>
+function generate() {
+  document.getElementById("status").innerText =
+    "Generating... please wait (2–10 minutes on CPU)";
+
+  fetch("http://localhost:8000/generate", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      prompt: document.getElementById("prompt").value
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("result").src =
+      "data:image/png;base64," + data.image;
+    document.getElementById("status").innerText = "Done!";
+  })
+  .catch(err => {
+    document.getElementById("status").innerText =
+      "Error: " + err;
+  });
+}
+</script>
+
+</body>
+</html>

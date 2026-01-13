@@ -39,13 +39,46 @@ This project is **optimized to run on a normal PC**, making it ideal for:
 - **Model Used:** Stable Diffusion v1.5  
 - **Source:** Hugging Face (`runwayml/stable-diffusion-v1-5`)
 - **Framework:** Diffusers + PyTorch
-- **Execution Mode:** CPU only
-
-> ⚠️ Model files are **not stored in this repository**  
-> They are downloaded automatically when the app runs.
-
+  
 ---
 
 ## 📸 Screenshots
 
+### 🎨 Generated Image Output
+
+
+<img src="images/texttoimg.png">
+
+
+
+## ▶️ How to Run the Project
+
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/text-to-image-fastapi.git
+cd text-to-image-fastapi
+2️⃣ Create Virtual Environment
+bash
+Copy code
+python -m venv venv
+venv\Scripts\activate
+3️⃣ Install Dependencies
+bash
+Copy code
+pip install -r requirements.txt
+4️⃣ Start the Server
+bash
+Copy code
+uvicorn main:app --host 0.0.0.0 --port 8000
+5️⃣ Open in Browser
+arduino
+Copy code
+http://localhost:8000
+📌 Important Notes
+First run will take longer (model download)
+CPU execution is slower than GPU (expected behavior)
+Keep the server running while generating images
+
+👨‍💻 Author
+
+M.Mughira.Asad
 
